@@ -1,5 +1,4 @@
 'use client';
-
 import { FormEvent } from 'react';
 
 export default function Form() {
@@ -16,32 +15,43 @@ export default function Form() {
     });
     console.log({ response });
   };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      const form = e.currentTarget.form;
+      if (form) {
+        form.dispatchEvent(new Event('submit', { cancelable: true }));
+      }
+    }
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
       className="flex flex-col gap-2 mx-auto max-w-md mt-10"
     >
       <input
-        name='username'
+        name="username"
         className="px-2 py-4 rounded-md border border-black text-black"
         type="text"
-        placeholder='Username'
+        placeholder="Username"
       />
       <input
         name="email"
         className="px-2 py-4 rounded-md border border-black text-black"
         type="email"
-        placeholder='Email'
+        placeholder="Email"
       />
       <input
         name="password"
         className="px-2 py-4 rounded-md border border-black text-black"
         type="password"
-        placeholder='Password'
+        placeholder="Password"
+        onKeyDown={handleKeyDown}
       />
-      <button 
+      <button
         type="submit"
-        className='border border-black text-black bg-slate-400 px-2 py-4 hover:bg-slate-700 rounded-md'
+        className="border border-black text-black bg-slate-400 px-2 py-4 hover:bg-slate-700 rounded-md"
       >
         Register
       </button>

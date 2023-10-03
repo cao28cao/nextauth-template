@@ -9,6 +9,7 @@ export default function Form() {
     const response = await fetch(`/api/auth/register`, {
       method: 'POST',
       body: JSON.stringify({
+        username: formData.get('username'),
         email: formData.get('email'),
         password: formData.get('password'),
       }),
@@ -21,16 +22,29 @@ export default function Form() {
       className="flex flex-col gap-2 mx-auto max-w-md mt-10"
     >
       <input
+        name='username'
+        className="px-2 py-4 rounded-md border border-black text-black"
+        type="text"
+        placeholder='Username'
+      />
+      <input
         name="email"
-        className="border border-black text-black"
+        className="px-2 py-4 rounded-md border border-black text-black"
         type="email"
+        placeholder='Email'
       />
       <input
         name="password"
-        className="border border-black  text-black"
+        className="px-2 py-4 rounded-md border border-black text-black"
         type="password"
+        placeholder='Password'
       />
-      <button type="submit">Register</button>
+      <button 
+        type="submit"
+        className='border border-black text-black bg-slate-400 px-2 py-4 hover:bg-slate-700 rounded-md'
+      >
+        Register
+      </button>
     </form>
   );
 }

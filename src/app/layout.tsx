@@ -23,7 +23,16 @@ export default async function RootLayout({
       <body className={font.className}>
         <nav>
           {!!session && <Logout />}
-          {!session && <Link href="/login">Login</Link>}
+          {!session && <Link href="/login">
+            <button className='px-6 py-4 rounded-md border border-black bg-slate-400 hover:bg-slate-600'>
+              Login
+            </button>
+            </Link>}
+            {!session && <Link href="/register">
+            <button className='px-6 py-4 rounded-md border border-black bg-slate-400 hover:bg-slate-600'>
+              Register
+            </button>
+            </Link>}
         </nav>
         {children}
       </body>

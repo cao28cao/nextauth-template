@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { FormEvent } from 'react';
 
 export default function Form() {
-  
+
   const router = useRouter();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,15 +29,22 @@ export default function Form() {
     >
       <input
         name="email"
-        className="border border-black text-black"
+        className="px-2 py-4 rounded-md border border-black text-black"
         type="email"
+        placeholder='Email'
       />
       <input
         name="password"
-        className="border border-black  text-black"
+        className="px-2 py-4 rounded-md border border-black text-black"
         type="password"
+        placeholder='Password'
       />
-      <button type="submit">Login</button>
+      <button 
+        type="submit"
+        className='border border-black text-black bg-slate-400 px-2 py-4 hover:bg-slate-700 rounded-md'
+      >
+        Login
+      </button>
     </form>
   );
 }
